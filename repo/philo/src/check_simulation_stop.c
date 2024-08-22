@@ -6,7 +6,7 @@
 /*   By: qhauuy <qhauuy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 16:24:16 by qhauuy            #+#    #+#             */
-/*   Updated: 2024/08/22 18:08:40 by qhauuy           ###   ########.fr       */
+/*   Updated: 2024/08/22 21:47:37 by qhauuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	get_simulation_stop(t_data *data)
 	return (result);
 }
 
-static void	set_simulation_stop(t_data *data)
+void	set_simulation_stop(t_data *data)
 {
 	pthread_mutex_lock(&data->mutex);
 	data->simulation_stop = 1;

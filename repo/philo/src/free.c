@@ -6,7 +6,7 @@
 /*   By: qhauuy <qhauuy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:53:48 by qhauuy            #+#    #+#             */
-/*   Updated: 2024/08/22 18:39:40 by qhauuy           ###   ########.fr       */
+/*   Updated: 2024/08/22 22:15:55 by qhauuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,27 @@ void	free_arrays(t_data *data)
 	free(data->philos);
 }
 
-void	destroy_philos(t_data *data, int i)
+void	destroy_philos(t_data *data, int max)
 {
-	int	j;
+	int	i;
 
-	j = 0;
-	while (j < i)
+	i = 0;
+	while (i < max)
 	{
-		pthread_mutex_destroy(&data->philos[j].mutex);
-		j++;
+		pthread_mutex_destroy(&data->philos[i].mutex);
+		i++;
 	}
 }
 
-void	destroy_forks(t_data *data, int i)
+void	destroy_forks(t_data *data, int max)
 {
-	int	j;
+	int	i;
 
-	j = 0;
-	while (j < i)
+	i = 0;
+	while (i < max)
 	{
-		pthread_mutex_destroy(&data->forks[j]);
-		j++;
+		pthread_mutex_destroy(&data->forks[i]);
+		i++;
 	}
 }
 

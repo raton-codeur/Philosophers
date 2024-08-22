@@ -6,7 +6,7 @@
 /*   By: qhauuy <qhauuy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 20:53:46 by qhauuy            #+#    #+#             */
-/*   Updated: 2024/08/22 19:03:57 by qhauuy           ###   ########.fr       */
+/*   Updated: 2024/08/22 22:16:18 by qhauuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ int			init(t_data *data, int argc, char **argv);
 
 /* free.c */
 void		free_arrays(t_data *data);
-void		destroy_philos(t_data *data, int i);
-void		destroy_forks(t_data *data, int i);
+void		destroy_philos(t_data *data, int max);
+void		destroy_forks(t_data *data, int max);
 void		free_all(t_data *data);
 
 /* threads.c */
@@ -69,6 +69,7 @@ void		wait_for_threads(t_data *data);
 
 /* check_simulation_stop.c */
 int			get_simulation_stop(t_data *data);
+void		set_simulation_stop(t_data *data);
 void		check_simulation_stop(t_data *data);
 
 /* routine.c */
