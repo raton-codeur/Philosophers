@@ -6,7 +6,7 @@
 /*   By: qhauuy <qhauuy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 20:53:46 by qhauuy            #+#    #+#             */
-/*   Updated: 2024/08/22 17:36:40 by qhauuy           ###   ########.fr       */
+/*   Updated: 2024/08/22 19:03:57 by qhauuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ typedef struct s_data
 
 /* utils.c */
 int			ft_atoi(const char *str);
+size_t		ft_strlen(const char *s);
+int			ft_strcmp(const char *s1, const char *s2);
 long long	get_absolute_timestamp(void);
 long long	get_timestamp(t_data *data);
 
@@ -57,10 +59,12 @@ int			init(t_data *data, int argc, char **argv);
 
 /* free.c */
 void		free_arrays(t_data *data);
-void		destroy_mutexes(t_data *data);
+void		destroy_philos(t_data *data, int i);
+void		destroy_forks(t_data *data, int i);
+void		free_all(t_data *data);
 
 /* threads.c */
-void		launch_threads(t_data *data);
+int			launch_threads(t_data *data);
 void		wait_for_threads(t_data *data);
 
 /* check_simulation_stop.c */

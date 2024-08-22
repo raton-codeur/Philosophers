@@ -6,7 +6,7 @@
 /*   By: qhauuy <qhauuy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 19:46:28 by qhauuy            #+#    #+#             */
-/*   Updated: 2024/08/21 12:00:13 by qhauuy           ###   ########.fr       */
+/*   Updated: 2024/08/22 18:58:03 by qhauuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,35 @@ int	ft_atoi(const char *str)
 	return (sign * result);
 }
 
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	if (s == NULL)
+		return (0);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	while (*s1 && *s1 == *s2)
+	{
+		s1++;
+		s2++;
+	}
+	return (*s1 - *s2);
+}
+
 long long	get_absolute_timestamp(void)
 {
 	struct timeval	tv;
 
 	if (gettimeofday(&tv, NULL) == -1)
 	{
-		write(2, "gettimeofday error\n", 19);
+		write(2, "gettimeofday: error\n", 20);
 		return (-1);
 	}
 	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);

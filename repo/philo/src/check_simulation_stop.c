@@ -6,7 +6,7 @@
 /*   By: qhauuy <qhauuy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 16:24:16 by qhauuy            #+#    #+#             */
-/*   Updated: 2024/08/22 16:25:23 by qhauuy           ###   ########.fr       */
+/*   Updated: 2024/08/22 18:08:40 by qhauuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	check_simulation_stop(t_data *data)
 			philo = &data->philos[i];
 			if (is_dead(philo, data))
 			{
-				printf("%06lld %d died\n", get_timestamp(data), philo->id);
+				printf("%6lld %d died\n", get_timestamp(data), philo->id);
 				set_simulation_stop(data);
 			}
 			if (meals_not_finished(philo, data))
