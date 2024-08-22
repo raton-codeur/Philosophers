@@ -1,0 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   routine.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qhauuy <qhauuy@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/19 15:16:52 by qhauuy            #+#    #+#             */
+/*   Updated: 2024/08/22 17:29:48 by qhauuy           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "philo.h"
+
+static void	sleep_routine(t_philo *philo, t_data *data)
+{
+	if (get_simulation_stop(data))
+		return ;
+	printf("%06lld %d is sleeping\n", get_timestamp(data), philo->id);
+	usleep(data->time_to_sleep * 1000);
+}
+
+static void	think_routine(t_philo *philo, t_data *data)
+{
+	if (get_simulation_stop(data))
+		return ;
+	printf("%06lld %d is thinking\n", get_timestamp(data), philo->id);
+}
+
+void	*routine(void *arg)
+{
+	t_philo	*philo;
+	t_data	*data;
+
+	philo = (t_philo *)arg;
+	data = philo->data;
+	while (get_simulation_stop(data) == 0)
+	{
+		eat_routine(philo, data);
+		sleep_routine(philo, data);
+		think_routine(philo, data);
+	}
+	return (NULL);
+}

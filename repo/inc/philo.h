@@ -6,7 +6,7 @@
 /*   By: qhauuy <qhauuy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 20:53:46 by qhauuy            #+#    #+#             */
-/*   Updated: 2024/08/22 16:38:32 by qhauuy           ###   ########.fr       */
+/*   Updated: 2024/08/22 17:30:14 by qhauuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,10 @@ void		wait_for_threads(t_data *data);
 int			get_simulation_stop(t_data *data);
 void		check_simulation_stop(t_data *data);
 
-/* philo_routine.c */
-void		*philo_routine(void *arg);
+/* routine.c */
+void		*routine(void *arg);
+
+/* eat_routine.c */
+void		eat_routine(t_philo *philo, t_data *data);
 
 #endif
