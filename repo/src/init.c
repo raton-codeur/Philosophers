@@ -6,7 +6,7 @@
 /*   By: qhauuy <qhauuy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:35:21 by qhauuy            #+#    #+#             */
-/*   Updated: 2024/08/22 14:26:20 by qhauuy           ###   ########.fr       */
+/*   Updated: 2024/08/22 15:54:22 by qhauuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static void	init_philos(t_data *data)
 		data->philos[i].id = i + 1;
 		data->philos[i].meals_count = 0;
 		data->philos[i].last_meal_time = 0;
+		pthread_mutex_init(&data->philos[i].mutex, NULL);
 		data->philos[i].data = data;
 		i++;
 	}
@@ -39,7 +40,7 @@ static void	init_forks(t_data *data)
 	}
 }
 
-int	init_data(t_data *data, int argc, char **argv)
+int	init(t_data *data, int argc, char **argv)
 {
 	data->philos_count = ft_atoi(argv[1]);
 	data->time_to_die = ft_atoi(argv[2]);
@@ -59,6 +60,6 @@ int	init_data(t_data *data, int argc, char **argv)
 		return (free_arrays(data), write(2, "malloc error\n", 13), 1);
 	init_philos(data);
 	init_forks(data);
-	pthread_mutex_init(&data->sim_stop_mut, NULL);
+	pthread_mutex_init(&data->mutex, NULL);
 	return (0);
 }

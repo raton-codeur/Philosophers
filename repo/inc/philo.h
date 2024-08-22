@@ -6,7 +6,7 @@
 /*   By: qhauuy <qhauuy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 20:53:46 by qhauuy            #+#    #+#             */
-/*   Updated: 2024/08/22 15:27:29 by qhauuy           ###   ########.fr       */
+/*   Updated: 2024/08/22 16:38:32 by qhauuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ typedef struct s_philo
 	pthread_t		thread_id;
 	int				meals_count;
 	long long		last_meal_time;
+	pthread_mutex_t	mutex;
 	struct s_data	*data;
-	pthread_mutex_t	philo_mutex;
 }					t_philo;
 
 typedef struct s_data
@@ -39,9 +39,9 @@ typedef struct s_data
 	int				meals_max;
 	long long		start_time;
 	int				simulation_stop;
+	pthread_mutex_t	mutex;
 	t_philo			*philos;
 	pthread_mutex_t	*forks;
-	pthread_mutex_t	data_mutex;
 }					t_data;
 
 /* utils.c */
@@ -53,19 +53,21 @@ long long	get_timestamp(t_data *data);
 int			check_args(int argc, char **argv);
 
 /* init.c */
-int			init_data(t_data *data, int argc, char **argv);
+int			init(t_data *data, int argc, char **argv);
 
 /* free.c */
 void		free_arrays(t_data *data);
-void		free_all(t_data *data);
+void		destroy_mutexes(t_data *data);
 
-/* main_thread.c */
+/* threads.c */
 void		launch_threads(t_data *data);
-int			get_sim_stop(t_data *data);
-void		check_simulation_stop(t_data *data);
 void		wait_for_threads(t_data *data);
 
-/* routine.c */
-void		*routine(void *arg);
+/* check_simulation_stop.c */
+int			get_simulation_stop(t_data *data);
+void		check_simulation_stop(t_data *data);
+
+/* philo_routine.c */
+void		*philo_routine(void *arg);
 
 #endif

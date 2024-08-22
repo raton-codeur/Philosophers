@@ -6,7 +6,7 @@
 /*   By: qhauuy <qhauuy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 20:00:22 by qhauuy            #+#    #+#             */
-/*   Updated: 2024/08/22 13:18:01 by qhauuy           ###   ########.fr       */
+/*   Updated: 2024/08/22 15:39:52 by qhauuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ static int	is_valid_arg(char *s)
 	i = 0;
 	while (s[i] == '0')
 		i++;
+	if (!s[i])
+		return (0);
 	if (strlen(s + i) < 10)
 		return (1);
 	else if (strlen(s + i) > 10)
@@ -53,7 +55,7 @@ int	check_args(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		if (!is_valid_arg(argv[i]) || ft_atoi(argv[i]) == 0)
+		if (!is_valid_arg(argv[i]))
 			return (write(2, "invalid argument\n", 17), 1);
 		i++;
 	}
