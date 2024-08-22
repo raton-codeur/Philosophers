@@ -6,7 +6,7 @@
 /*   By: qhauuy <qhauuy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 20:53:46 by qhauuy            #+#    #+#             */
-/*   Updated: 2024/08/22 17:30:14 by qhauuy           ###   ########.fr       */
+/*   Updated: 2024/08/22 17:36:40 by qhauuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,11 @@ void		check_simulation_stop(t_data *data);
 /* routine.c */
 void		*routine(void *arg);
 
-/* eat_routine.c */
-void		eat_routine(t_philo *philo, t_data *data);
+/* routine_utils.c */
+void		lock_fork(t_data *data, int i);
+void		unlock_fork(t_data *data, int i);
+void		increment_meals_count(t_philo *philo);
+void		set_last_meal_time(t_philo *philo, t_data *data);
+void		philo_alone(t_philo *philo, t_data *data);
 
 #endif
