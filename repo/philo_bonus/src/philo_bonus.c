@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   philo_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qhauuy <qhauuy@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/19 14:53:48 by qhauuy            #+#    #+#             */
-/*   Updated: 2024/08/23 15:35:14 by qhauuy           ###   ########.fr       */
+/*   Created: 2024/08/14 20:51:56 by qhauuy            #+#    #+#             */
+/*   Updated: 2024/08/23 15:35:04 by qhauuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-void	free_all(t_data *data)
+int	main(int argc, char **argv)
 {
-	sem_close(data->forks);
-	sem_unlink("/forks");
+	t_data	data;
+
+	check_args(argc, argv);
+	init(&data, argc, argv);
+	free_all(&data);
+	return (0);
 }

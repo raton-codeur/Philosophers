@@ -1,20 +1,11 @@
-NAME = philo
-FLAGS = -Wall -Werror -Wextra -I inc -g3 #-fsanitize=address
+NAME = philo_bonus
+FLAGS = -Wall -Werror -Wextra -I inc -g3 -fsanitize=address
 OBJS = $(patsubst src/%, tmp/%, $(SRCS:.c=.o))
-SRCS = \
-	src/check_args.c \
-	src/free.c \
-	src/init.c \
-	src/utils.c \
-	src/check_simulation_stop.c \
-	src/threads.c \
-	src/philo.c \
-	src/routine.c \
-	src/routine_utils.c \
+SRCS = $(shell find src -type f -name "*.c")
 
 tmp/%.o : src/%.c
 	@ mkdir -p $(dir $@)
-	@ cc $(FLAGS) -c $< -o $@ && printf "."
+	@ cc $(FLAGS) -c $< -o $@ && printf ".\n"
 
 $(NAME) : $(OBJS)
 	@ cc $(FLAGS) $^ -o $@ && printf "\n"

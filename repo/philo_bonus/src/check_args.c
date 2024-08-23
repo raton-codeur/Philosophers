@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qhauuy <qhauuy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: qhauuy <qhauuy@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 20:00:22 by qhauuy            #+#    #+#             */
-/*   Updated: 2024/08/22 18:59:02 by qhauuy           ###   ########.fr       */
+/*   Updated: 2024/08/23 15:23:34 by qhauuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_bonus.h"
 
 static void	print_usage(void)
 {
@@ -46,18 +46,17 @@ static int	is_valid_arg(char *s)
 		return (ft_strcmp(s + i, "2147483647") <= 0);
 }
 
-int	check_args(int argc, char **argv)
+void	check_args(int argc, char **argv)
 {
 	int	i;
 
 	if (argc < 5 || argc > 6)
-		return (print_usage(), 1);
+		return (print_usage(), exit(1));
 	i = 1;
 	while (i < argc)
 	{
 		if (!is_valid_arg(argv[i]))
-			return (write(2, "invalid argument\n", 17), 1);
+			return (write(2, "invalid argument\n", 17), exit(1));
 		i++;
 	}
-	return (0);
 }
