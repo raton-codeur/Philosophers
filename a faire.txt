@@ -1,3 +1,9 @@
--
--
--
+
+
+
+pour les bonus
+
+quand on va devoir tuer les process child
+pour sassurer que le process ne sest pas deja terminé tout seul
+on peut utiliser kill sur lui avec le signal 0 et tester ce que ça renvoie
+
